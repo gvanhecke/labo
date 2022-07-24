@@ -7,8 +7,12 @@
         return years;
     }
 
+
+    //compute dynamically the number of years since the begin of my career
     const today = new Date(new Date(Date.now()).setHours(0,0,0,0));
     const careerStartedOn = new Date(new Date(2005,7,01).setHours(0,0,0,0));
+    const years = yearDiff(careerStartedOn)(today);
 
-    document.getElementById('experience').textContent = yearDiff(careerStartedOn)(today);
+    //add years of experience in the DOM
+    document.querySelector('#experience').textContent = years;
 } 

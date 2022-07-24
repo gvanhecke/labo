@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap");
+:root {
+  --main-color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  margin: 0;
+  background-color: #E6E1DF;
+  background-image: url(/images/curly-line.svg);
+  background-size: 100vh;
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  font-family: "Poppins";
+  color: var(--main-color);
+}
+
+section {
+  padding: 5em 2em 2em 5em;
+}
+
+.presentation-section .container {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+.presentation-section .container h1 {
+  font-weight: 500;
+}
+.presentation-section .container hr {
+  width: 2rem;
+}
+.presentation-section .container h2 {
+  font-weight: 200;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+.presentation-section .container .portrait img {
+  width: 20em;
+  border-radius: 25%;
+}
+
+.testimonial-section {
+  background-color: rgba(170, 126, 108, 0.2470588235);
+  text-align: center;
+}
+.testimonial-section ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+.testimonial-section ul li {
+  list-style-type: none;
+  text-align: center;
+  width: 30em;
+  margin: 2em 1em 3em auto;
+  background-color: rgba(190, 139, 119, 0.431372549);
+  border-radius: 1em;
+}
+.testimonial-section ul img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: #b37b66;
+  margin-top: -2.3em;
+}
+
+.socialnetwork-section {
+  background-color: var(--main-color);
+  text-align: center;
+  padding: 2em;
+  vertical-align: middle;
+}
+.socialnetwork-section ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+.socialnetwork-section ul li {
+  list-style-type: none;
+  margin: 0 1em;
+}
+.socialnetwork-section ul li i {
+  color: #E6E1DF;
+  font-size: 48px;
+}/*# sourceMappingURL=main.css.map */

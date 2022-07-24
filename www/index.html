@@ -2,24 +2,26 @@
 <html>
    <head>
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="css/fonts.css">
+      <link rel="stylesheet" href="css/main.css">
+      <script src="https://kit.fontawesome.com/8328652070.js" crossorigin="anonymous"></script>
       <script src="/js/app.js"></script>
       <title>
          Geofrey's Home
       </title>
    </head>
 <body onload="onLoad()">
-   <div id="main">
-      <div id="presentation" class="row">
-         <div id="right-pane" class="column">
-            <div id="my-photo" class="frame">
-               <img src="/images/me-formated.jpg" alt="my photo">
+   <section class="presentation-section">
+      <div class="container">
+         <div id="right-col" class="column">
+            <div class="portrait">
+               <img src="/images/me-formated.jpg" alt="picture of me">
             </div>
          </div>
-         <div id="left-pane" class="column">
+         <div id="left-col" class="column">
             <div>
-               <h2>Geofrey van Hecke</h2>
+               <h2>Curriculum Vitae</h2>
+               <hr></hr>
+               <h1>Geofrey van Hecke</h2>
                <div id="summary">
                   <p><b>Passionate</b>, <b>enthusiastic</b> and <b>experienced</b> computer engineer.</p>
                   <p>Very <b>rigorous</b> in terms of <b>quality</b> and <b>performance</b>, he creates applications that respect the state of the art in the industry.</p>
@@ -28,6 +30,45 @@
             </div>
          </div>
       </div>
-   </div>
+   </section>
+   <section class="technology-section"></section>
+   <section class="testimonial-section">
+      <ul>
+         <li>
+            <img src="/images/jo-de-man.jpg" alt="Jo De Man"></img>
+            <blockquote>Geofrey worked as a lead developer / scrum master in one of my largest teams. He did a wonderful job in coaching his fellow developers, preparing and executing the scrum rituals, reviewing code and analysing technical problems .... and was just an all round nice person :-) I can highly recommend him for any .NET development team.</blockquote>
+            <cite>- Jo De Man</cite>
+         </li>
+         <li>
+            <img src="/images/damien-etienne.jpg" alt="Damien Etienne"></img>
+            <blockquote>I enjoyed working with Geoffrey. He has a very impressive expertise in .NET, and is always aware of last technologies and best practices. He is a very good source for innovative solutions. Moreover, he has great human qualities.</blockquote>
+            <cite>- Damien Etienne</cite>
+         </li>
+         <li>
+            <img src="/images/bertrand-larsy.jpg" alt="Bertrand Larsy"></img>
+            <blockquote>What I like most about Geofrey is his passionate way of life: he grows on the many areas that inspire him continuously. This is not only true for his developer job, also for any aspect of life. He also has a high integrity, is lawful, hard working, and has the ability to understand quickly complex issues from several point of views.</blockquote>
+            <cite>- Bertrand Larsy</cite>
+         </li>
+      </ul>
+   </section>
+   <section class="socialnetwork-section">
+      <ul>
+         <li>
+            <a href="https://www.facebook.com/gvanhecke/" target="_blank" rel="noreferrer noopener">
+               <i class="fa-brands fa-facebook"></i>
+            </a>
+         </li>
+         <li>
+            <a href="https://www.twitter.com/geofreyvanhecke" target="_blank" rel="noreferrer noopener">
+               <i class="fa-brands fa-twitter"></i>
+            </a>
+         </li>
+         <li>
+            <a href="https://www.linkedin.com/in/geofrey-van-hecke-8b28438" target="_blank" rel="noreferrer noopener">
+               <i class="fa-brands fa-linkedin"></i>
+            </a>
+         </li>
+      </ul>
+   </section>
 </body>
 </html>
