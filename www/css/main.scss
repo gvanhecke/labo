@@ -50,6 +50,18 @@ section{
     }
 }
 
+.technology-section{
+    ul{
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(19rem, 1fr));
+
+        li{
+            width: 40em;
+        }
+    }
+}
+
 .testimonial-section {
     background-color: #aa7e6c3f;
     text-align: center;
@@ -65,15 +77,24 @@ section{
             margin: 2em 1em 3em auto;
             background-color: #be8b776e;
             border-radius: 1em;
-        }
 
-        img{
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            border: 5px solid;
-            border-color: #b37b66;
-            margin-top: -2.3em;
+            img{
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                border: 5px solid;
+                border-color: #b37b66;
+                margin-top: -2.3em;
+            }
+
+            blockquote{
+                font-style: italic;
+            }
+
+            cite{
+                font-weight: bold;
+                font-style: normal;
+            }
         }
     }
 }
