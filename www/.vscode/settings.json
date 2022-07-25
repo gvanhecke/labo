@@ -8,5 +8,42 @@
         "**/*.scss",
         "**/*.sass",
         "**/*.ts"
-    ]
+    ],
+
+    "deploy.reloaded": {
+        "packages": [
+            {
+                "name": "Website",
+                "files": [
+                    "/**/*.html",
+                    "/**/*.css",
+                    "/**/*.js"
+                ]
+            }
+
+        ],
+
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "It-Sirius SFTP",
+                "description": "Deploy to It-sirius.be",
+
+                "dir": "/web/geofrey",
+                "host": "it-sirius.be", "port": 22,
+                "askForUser": true,
+                "askForPassword": true
+            }
+        ],
+
+        "buttons": [
+            {
+                "text": "Deploy(SFTP)!",
+                "command": "extension.deploy.reloaded.deployPackageFiles",
+                "arguments": ["Website", "It-Sirius SFTP"]
+            }
+        ]      
+    }
+
+
 }
