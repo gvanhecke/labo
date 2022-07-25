@@ -9,26 +9,27 @@ body{
     margin: 0;
     background-color: #E6E1DF;
     background-image: url(/images/curly-line.svg);
-    //background-size: 963px;
-    background-size: 100vh;
+    background-size: 963px;
     background-position: center;
     background-repeat: repeat;
     background-attachment: fixed;
     font-family: 'Poppins';
-    color: var(--main-color)
+    color: var(--main-color);
+    word-wrap: break-word;
+    font-size: 12px;
 }
 
 section{
-    padding: 5em 2em 2em 5em;
+    padding-top: 5em;
 }
 
 .presentation-section{
     .container{
         text-align: center;
-        font-size: 0.9rem;
         font-weight: 200;
         h1{
             font-weight: 500;
+            font-size: 4em;
         }      
 
         hr{
@@ -37,54 +38,61 @@ section{
 
         h2{
             font-weight: 200;
-            font-size: 1em;
             text-transform: uppercase;
+            font-size: 0.8em;
         }
 
         .portrait{
             img{
-                width: 20em;
+                width: 50vw;
                 border-radius: 25%;
+                max-width: 500px;
             }    
         }
     }
 }
 
 .technology-section{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     ul{
         list-style-type: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(19rem, 1fr));
-
         li{
-            width: 40em;
+            min-width: 40em;
+            i{
+                color: #44b916;
+                display: inline;
+            }
         }
     }
 }
 
 .testimonial-section {
     background-color: #aa7e6c3f;
-    text-align: center;
-    ul{
-        margin: 0;
-        padding: 0;
-        display: inline-flex;
 
+    ul{
+        text-align: center;
+        margin: 0;
+        padding-top: 2em;
+        padding-bottom: 2em;
         li{
             list-style-type: none;
-            text-align: center;
-            width: 30em;
-            margin: 2em 1em 3em auto;
+            width: 40vw;
+            min-width: 50em;
+            margin-top: 3em;
+            margin-right: auto;
+            margin-left: auto;
             background-color: #be8b776e;
             border-radius: 1em;
+            margin-bottom: 5em;
 
             img{
                 width: 64px;
-                height: 64px;
                 border-radius: 50%;
                 border: 5px solid;
                 border-color: #b37b66;
-                margin-top: -2.3em;
+                margin-top: -3em;
             }
 
             blockquote{
@@ -115,7 +123,7 @@ section{
 
             i{
                 color:#E6E1DF;
-                font-size: 48px;
+                font-size: 3em;
             }
 
         }
