@@ -1,0 +1,359 @@
+openapi: 3.0.0
+info:
+  title: Affilia API
+  version: 1.0.0
+  description: API pour gérer une association
+  contact:
+    name: IT-Sirius Support
+    email: contact@it-sirius.be
+servers:
+  - url: https://lab.it-sirius.be/api/affilia/v1
+paths:
+  /affiliates:
+    get:
+      summary: Récupérer la liste des affiliés
+      description: Récupérer la liste de tous les affiliés de l'association
+      responses:
+        '200':
+          description: Liste des affiliés
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Affiliate'
+    post:
+      summary: Créer un nouvel affilié
+      description: Créer un nouvel affilié dans l'association
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+      responses:
+        '201':
+          description: Affilié créé avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+  /affiliates/{id}:
+    get:
+      summary: Récupérer un affilié par ID
+      description: Récupérer un affilié en utilisant son ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'affilié
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Affilié trouvé
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '404':
+          description: Affilié non trouvé
+    put:
+      summary: Mettre à jour un affilié
+      description: Mettre à jour les informations d'un affilié en utilisant son ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'affilié
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+      responses:
+        '200':
+          description: Affilié mis à jour avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+        '404':
+          description: Affilié non trouvé
+    delete:
+      summary: Supprimer un affilié
+      description: Supprimer un affilié en utilisant son ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de l'affilié
+  /affiliates/{affiliateId}/payments:
+    get:
+      operationId: getPaymentsForAffiliate
+      parameters:
+        - name: affiliateId
+          in: path
+          required: true
+          description: Identifiant unique de l'affilié.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Nombre maximal de paiements à renvoyer.
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Nombre de paiements à sauter au début de la réponse.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Paiements associés à l'affilié.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Payment"
+  /subscriptions:
+    get:
+      description: Récupérer une liste de toutes les cotisations.
+      responses:
+        '200':
+          description: Une liste de cotisations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+  /subscriptions/{id}:
+    get:
+      description: Récupérer une cotisation en fonction de son identifiant.
+      parameters:
+        - name: id
+          in: path
+          description: Identifiant unique de la cotisation.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Détails de la cotisation correspondante.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    /payments:
+      get:
+      description: Récupère la liste de tous les paiements.
+      responses:
+        '200':
+          description: Une liste de paiements a été récupérée avec succès.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+  /payments/{id}:
+    get:
+      description: Récupère les détails d'un paiement spécifique.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Les détails du paiement ont été récupérés avec succès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'            
+components:
+  schemas:
+    Affiliate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Identifiant unique de l'affilié.
+        first_name:
+          type: string
+          example: "John"
+        last_name:
+          type: string
+          example: "Doe"
+        date_of_birth:
+          type: string
+          format: date
+          example: "2000-01-01"
+        level:
+          $ref: '#/components/schemas/Level'    
+        gender:
+          type: string
+          enum:
+            - "Femme"
+            - "Homme"
+            - "Autre"
+        federal_license:
+          $ref: '#/components/schemas/FederalLicense'
+        personal_info:
+          $ref: '#/components/schemas/PersonalInformation'
+        relationships:
+          type: object
+          properties:
+            subscriptions:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+                  type:
+                    type: string
+              description: Liens vers les cotisations associées à cet affilié.
+        
+    FederalLicense:
+      type: object
+      properties:
+        affiliationNumber:
+          type: string
+          description: The affiliation number to the federation.
+        validityDate:
+          type: string
+          format: date
+          description: The date the federal license is valid until.
+      required:
+        - affiliationNumber
+        - validityDate
+
+    PersonalInformation:
+      type: object
+      properties:
+        homeAddress:
+          $ref: '#/components/schemas/Address'
+        parents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Parent'
+      required:
+        - homeAddress
+        - parents
+
+    Level:
+      type: object
+      properties:
+        title:
+           type: string
+           exemple: "3 Kyu"
+        description:
+           type: string
+           example: "Ceinture verte"
+           
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          description: The name of the street where the affiliate lives.
+        houseNumber:
+          type: string
+          description: The number of the house where the affiliate lives.
+        postalCode:
+          type: string
+          description: The postal code of the affiliate's city.
+        city:
+          type: string
+          description: The name of the affiliate's city.
+        country:
+          type: string
+          description: The name of the country where the affiliate lives.
+      required:
+        - street
+        - houseNumber
+        - postalCode
+        - city
+        - country
+
+    Parent:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: The first name of the parent.
+        lastName:
+          type: string
+          description: The last name of the parent.
+        phoneNumber:
+          type: string
+          description: The phone number of the parent.
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of the parent.
+      required:
+        - firstName
+        - lastName
+        - phoneNumber
+        - emailAddress
+
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the subscription.
+        type:
+          type: string
+          description: The type of the subscription.
+        payment:
+          $ref: '#/components/schemas/Payment'
+          description: Payment related to this subscription.  
+      required:
+        - id
+        - type
+      links:
+        payment:
+          $ref: "#/components/links/SubscriptionToPayment"  
+    
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Identifiant unique du paiement.
+        execution_date:
+          type: string
+          format: date-time
+          description: Date d'exécution du paiement.
+        description:
+          type: string
+          description: Description du paiement.
+        amount:
+          type: number
+          format: float
+          description: Montant en Euro.
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+          description: Référence à la cotisation associée à ce paiement.
+
+  links:
+    SubscriptionToPayment:
+      operationId: getPaymentForSubscription
+      parameters:
+        subscriptionId: "$response.body#/id"
+      request:
+        url: "/payments?subscriptionId={subscriptionId}"
+        method: GET
+      description: Retrieve the payment associated with a subscription
