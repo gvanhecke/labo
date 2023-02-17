@@ -1,4 +1,4 @@
-namespace Affilia.Api.Models
+namespace Affilia.Api.Data.Models
 {
     public class Subscription
     {
